@@ -4,6 +4,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
   m.def("octree_batch", &octree_batch, "merge a batch of octrees");
   m.def("octree_samples", &octree_samples, "octree samples");
   m.def("points2octree", &points2octree, "convert points to octree");
+  m.def("points2octree_direct", &points2octree_direct, "directly convert points to octree (not through a data Tensor)");
   m.def("octree2col", &octree2col, "octree2col");
   m.def("col2octree", &col2octree, "col2octree");
   m.def("octree_conv", &octree_conv, "octree based convolution");

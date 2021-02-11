@@ -25,11 +25,16 @@ class Points2Octree:
     self.key2xyz = key2xyz
 
   def __call__(self, points):
-    octree = ocnn.points2octree(points, self.depth, self.full_depth, self.node_dis,
+    if isinstance(points, torch.Tensor):
+      return ocnn.points2octree(points, self.depth, self.full_depth, self.node_dis,
                                 self.node_feature, self.split_label, self.adaptive,
                                 self.adp_depth, self.th_normal, self.th_distance,
                                 self.extrapolate, self.save_pts, self.key2xyz)
-    return octree
+    else:
+      return ocnn.points2octree_direct(points, self.depth, self.full_depth, self.node_dis,
+                                       self.node_feature, self.split_label, self.adaptive,
+                                       self.adp_depth, self.th_normal, self.th_distance,
+                                       self.extrapolate, self.save_pts, self.key2xyz)
 
 
 class NormalizePoints:

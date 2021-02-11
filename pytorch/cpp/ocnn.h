@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <torch/extension.h>
+#include <octree/octree.h>
 
 using std::string;
 using std::vector;
@@ -20,6 +21,10 @@ Tensor points2octree(Tensor points, int depth, int full_depth, bool node_dis,
                      bool node_feature, bool split_label, bool adaptive,
                      int adp_depth, float th_normal, float th_distance,
                      bool extrapolate, bool save_pts, bool key2xyz);
+Tensor points2octree_direct(Points points, int depth, int full_depth, bool node_dis,
+                            bool node_feature, bool split_label, bool adaptive,
+                            int adp_depth, float th_normal, float th_distance,
+                            bool extrapolate, bool save_pts, bool key2xyz);
 
 Tensor octree2col(Tensor data_in, Tensor octree, int depth,
                   vector<int> kernel_size, int stride);
