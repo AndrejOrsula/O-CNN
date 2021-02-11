@@ -68,18 +68,18 @@ void get_all_filenames(vector<string>& all_filenames, const string& filename_in)
 
 #else
 #include <fstream>
+#include <sstream>
 
-void get_all_filenames(vector<string>& all_filenames, const string& data_list) {
+void get_all_filenames(vector<string> &all_filenames, const string &data_list)
+{
   all_filenames.clear();
 
-  std::ifstream infile(data_list);
-  if (!infile) return;
-
-  string line;
-  while (std::getline(infile, line)) {
-    all_filenames.push_back(line);
+  std::istringstream file_list_ss(data_list);
+  string file;
+  while (file_list_ss >> file)
+  {
+    all_filenames.push_back(file);
   }
-  infile.close();
 }
 
 #endif

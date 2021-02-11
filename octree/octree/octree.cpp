@@ -40,14 +40,20 @@ void Octree::resize_octree(const int sz) {
 
 bool Octree::read_octree(const string& filename) {
   std::ifstream infile(filename, std::ios::binary);
-  if (!infile) return false;
+  if (!infile.is_open())
+  {
+    std::cerr << "Cannot open file " << filename << " , error: " << strerror(errno) << std::endl;
+    return false;
+  }
 
   infile.seekg(0, infile.end);
   size_t len = infile.tellg();
   infile.seekg(0, infile.beg);
-  if (len < sizeof(OctreeInfo)) {
+  if (len < sizeof(OctreeInfo))
+  {
     // the file should at least contain a OctreeInfo structure
     infile.close();
+    std::cerr << "File " << filename << " is not a valid octree" << std::endl;
     return false;
   }
 
