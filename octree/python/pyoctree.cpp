@@ -5,6 +5,7 @@
 #include <pybind11/numpy.h>
 
 #include <points.h>
+#include <points_parser.h>
 #include <octree_samples.h>
 #include <marching_cube.h>
 
@@ -44,7 +45,8 @@ PYBIND11_MODULE(pyoctree, m) {
               int))&MarchingCube::compute;
 
   // points interface
-  py::class_<Points>(m, "Points")
+  py::class_<PointsParser>(m, "PointsParser").def(py::init<>());
+  py::class_<Points, PointsParser>(m, "Points")
   .def(py::init<>())
   .def("read_points", &Points::read_points)
   .def("write_points", &Points::write_points)
