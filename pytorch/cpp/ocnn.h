@@ -38,3 +38,5 @@ Tensor octree_depad(Tensor data_in, Tensor octree, int depth);
 vector<Tensor> octree_max_pool(Tensor data_in, Tensor octree, int depth);
 Tensor octree_max_unpool(Tensor data_in, Tensor mask, Tensor octree, int depth);
 Tensor octree_mask_pool(Tensor data_in, Tensor mask, Tensor octree, int depth);
+
+void write_octree(Tensor octree, const std::string &filename);

@@ -17,4 +17,5 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
   m.def("transform_points", &transform_points, "transform the point cloud");
   m.def("normalize_points", &normalize_points, "normalize the point cloud");
   m.def("bounding_sphere", &bounding_sphere, "calc the bounding sphere");
+  m.def("write_octree", &write_octree, "write octree into file");
 }

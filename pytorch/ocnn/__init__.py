@@ -3,7 +3,7 @@ import torch
 # low level api
 from . import nn
 from .nn import octree_batch, octree_samples, points2octree, octree_property, \
-                bounding_sphere, transform_points, normalize_points
+                bounding_sphere, transform_points, normalize_points, write_octree
 
 # transforms
 from .transforms import NormalizePoints, TransformPoints, Points2Octree, \
