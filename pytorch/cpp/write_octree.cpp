@@ -1,3 +1,5 @@
+#include <octree/octree.h>
+
 #include "ocnn.h"
 
 void write_octree(Tensor input, const std::string &filename)
